@@ -108,7 +108,7 @@ export default class PlayerController extends StateMachineAI {
         super.changeState(stateName);
     }
 
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /**
      * We want to detect when our player is moving over one of the switches in the world, and along with the sound
      * and label changes, we also visually want to change the tile.
@@ -141,7 +141,8 @@ export default class PlayerController extends StateMachineAI {
                 console.log("Button 1 pressed");
                 this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
                 this.button1_pressed = true;
-                // change off to on
+                // change switch from "OFF" to "ON"
+                this.tilemap.setTileAtRowCol(new Vec2(6, 16), 9);
             }
             // second button
             if(this.owner.position.x >= 23 * 32 && this.owner.position.x <= 24 * 32 
@@ -149,7 +150,8 @@ export default class PlayerController extends StateMachineAI {
                 console.log("Button 2 pressed");
                 this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
                 this.button2_pressed = true;
-                // change off to on
+                // change switch from "OFF" to "ON"
+                this.tilemap.setTileAtRowCol(new Vec2(23, 13), 9);
             }
             // Third button
             if(this.owner.position.x >= 35 * 32 && this.owner.position.x <= 36 * 32 
@@ -157,7 +159,8 @@ export default class PlayerController extends StateMachineAI {
                 console.log("Button 3 pressed");
                 this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
                 this.button3_pressed = true;
-                // change off to on
+                // change switch from "OFF" to "ON"
+                this.tilemap.setTileAtRowCol(new Vec2(35, 19), 9);
             }
             // last button
             if(this.owner.position.x >= 49 * 32 && this.owner.position.x <= 50 * 32 
@@ -165,7 +168,8 @@ export default class PlayerController extends StateMachineAI {
                 console.log("Button 4 pressed");
                 this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
                 this.button4_pressed = true;
-                // change off to on
+                // change switch from "OFF" to "ON"
+                this.tilemap.setTileAtRowCol(new Vec2(49, 16), 9);
             }
         }
         // switch detector for level2
