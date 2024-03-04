@@ -5,6 +5,7 @@ import GameNode, { TweenableProperties } from "../../Wolfie2D/Nodes/GameNode";
 import Sprite from "../../Wolfie2D/Nodes/Sprites/Sprite";
 import OrthogonalTilemap from "../../Wolfie2D/Nodes/Tilemaps/OrthogonalTilemap";
 import { EaseFunctionType } from "../../Wolfie2D/Utils/EaseFunctions";
+import Level1 from "../Scenes/Level1";
 import { HW5_Color } from "../hw5_color";
 import { HW5_Events } from "../hw5_enums";
 import Fall from "./PlayerStates/Fall";
@@ -36,6 +37,17 @@ export default class PlayerController extends StateMachineAI {
     MAX_SPEED: number = 300;
     tilemap: OrthogonalTilemap;
     suitColor: HW5_Color;
+    level1_button1_pressed: boolean = false;
+    level1_button2_pressed: boolean = false;
+    level1_button3_pressed: boolean = false;
+    level1_button4_pressed: boolean = false;
+    level2_button1_pressed: boolean = false;
+    level2_button2_pressed: boolean = false;
+    level2_button3_pressed: boolean = false;
+    level2_button4_pressed: boolean = false;
+    level2_button5_pressed: boolean = false;
+    level2_button6_pressed: boolean = false;
+    level2_button7_pressed: boolean = false;
 
     // HOMEWORK 5 - TODO
     /**
@@ -113,7 +125,6 @@ export default class PlayerController extends StateMachineAI {
      */
     update(deltaT: number): void {
 		super.update(deltaT);
-
 		if(this.currentState instanceof Jump){
 			Debug.log("playerstate", "Player State: Jump");
 		} else if (this.currentState instanceof Walk){
@@ -124,6 +135,42 @@ export default class PlayerController extends StateMachineAI {
 			Debug.log("playerstate", "Player State: Idle");
 		} else if(this.currentState instanceof Fall){
             Debug.log("playerstate", "Player State: Fall");
+        }
+
+        // switch detector for level1
+        if(this.tilemap.getScene() instanceof Level1) {
+            // first button
+            if(this.owner.position.x >= 6 * 32 && this.owner.position.x <= 7 * 32 
+                && this.owner.position.y == 15.5 * 32 && !this.level1_button1_pressed) {
+                console.log("Button 1 pressed");
+                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
+                this.level1_button1_pressed = true;
+                // change off to on
+            }
+            // second button
+            if(this.owner.position.x >= 23 * 32 && this.owner.position.x <= 24 * 32 
+                && this.owner.position.y == 12.5 * 32 && !this.level1_button2_pressed) {
+                console.log("Button 2 pressed");
+                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
+                this.level1_button2_pressed = true;
+                // change off to on
+            }
+            // Third button
+            if(this.owner.position.x >= 35 * 32 && this.owner.position.x <= 36 * 32 
+                && this.owner.position.y == 18.5 * 32 && !this.level1_button3_pressed) {
+                console.log("Button 3 pressed");
+                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
+                this.level1_button3_pressed = true;
+                // change off to on
+            }
+            // last button
+            if(this.owner.position.x >= 49 * 32 && this.owner.position.x <= 50 * 32 
+                && this.owner.position.y == 15.5 * 32 && !this.level1_button4_pressed) {
+                console.log("Button 4 pressed");
+                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
+                this.level1_button4_pressed = true;
+                // change off to on
+            }
         }
 	}
 }
