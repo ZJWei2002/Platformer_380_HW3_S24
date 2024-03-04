@@ -23,3 +23,15 @@ export default class HW5_ParticleSystem extends ParticleSystem {
         super.setParticleAnimation(particle);
     }
 }
+
+/** default implementation
+ * 
+ * function setParticleAnimation(particle: Particle) {
+    particle.vel = RandUtils.randVec(-50, 50, -100, 100);
+    particle.tweens.add("active", {
+        startDelay: 0,
+        duration: this.lifetime,
+        effects: []
+    });
+ * }
+ */

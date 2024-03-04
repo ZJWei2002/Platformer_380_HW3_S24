@@ -221,7 +221,7 @@ export default class GameLevel extends Scene {
             if (Input.isKeyJustPressed("3")) {
                 this.emitter.fireEvent(HW5_Events.SUIT_COLOR_CHANGE, {color: HW5_Color.GREEN});
                 this.suitChangeTimer.start();
-            }
+        }
         }
     }
 

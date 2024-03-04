@@ -7,7 +7,7 @@ import Level2 from "./Level2";
 
 export default class Level1 extends GameLevel {
     
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /**
      * Add your balloon pop sound here and use it throughout the code
      */
