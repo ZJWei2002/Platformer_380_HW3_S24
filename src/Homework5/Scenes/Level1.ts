@@ -66,7 +66,7 @@ export default class Level1 extends GameLevel {
             this.addBalloon("red", pos, {color: HW5_Color.RED});
         }
 
-        for(let pos of [new Vec2(20, 3), new Vec2(41,4), new Vec2(3, 4)]){
+        for(let pos of [new Vec2(20, 3), new Vec2(41, 4), new Vec2(3, 4)]){
             this.addBalloon("blue", pos, {color: HW5_Color.BLUE});
         }
         this.emitter.fireEvent(GameEventType.PLAY_SOUND, {key: "level_music", loop: true, holdReference: true});
