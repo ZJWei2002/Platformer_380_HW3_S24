@@ -21,7 +21,7 @@ export default class Level1 extends GameLevel {
         this.load.audio("switch", "hw5_assets/sounds/switch.wav");
         this.load.audio("player_death", "hw5_assets/sounds/player_death.wav");
         this.load.audio("balloon_pop", "hw5_assets/sounds/balloon_pop.wav")
-        // HOMEWORK 5 - TODO
+        // HOMEWORK 5 - TODO - DONE
         // You'll want to change this to your level music
         this.load.audio("level_music", "hw5_assets/music/level1_background_music.mp3");
     }

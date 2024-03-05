@@ -30,7 +30,7 @@
         },
         {
             "name": "RED_WALK",
-            "frames": [ {"index": 4, "duration": 16}, {"index": 5, "duration": 16}, {"index": 6, "duration": 16}, {"index": 7, "duration": 16} ]
+            "frames": [ {"index": 4, "duration": 8}, {"index": 5, "duration": 8}, {"index": 6, "duration": 8}, {"index": 7, "duration": 8} ]
         },
         {
             "name": "RED_JUMP",
@@ -47,7 +47,7 @@
         },
         {
             "name": "GREEN_WALK",
-            "frames": [ {"index": 8, "duration": 16}, {"index": 9, "duration": 16}, {"index": 10, "duration": 16}, {"index": 11, "duration": 16} ]
+            "frames": [ {"index": 8, "duration": 8}, {"index": 9, "duration": 8}, {"index": 10, "duration": 8}, {"index": 11, "duration": 8} ]
         },
         {
             "name": "GREEN_JUMP",
@@ -64,7 +64,7 @@
         },
         {
             "name": "BLUE_WALK",
-            "frames": [ {"index": 12, "duration": 16}, {"index": 13, "duration": 16}, {"index": 14, "duration": 16}, {"index": 15, "duration": 16} ]
+            "frames": [ {"index": 12, "duration": 8}, {"index": 13, "duration": 8}, {"index": 14, "duration": 8}, {"index": 15, "duration": 8} ]
         },
         {
             "name": "BLUE_JUMP",

@@ -22,7 +22,7 @@ import HW5_ParticleSystem from "../HW5_ParticleSystem";
 import PlayerController from "../Player/PlayerController";
 import MainMenu from "./MainMenu";
 
-// HOMEWORK 5 - TODO
+// HOMEWORK 5 - TODO - added in Level1 and Level2
 /**
  * Add in some level music.
  * 
@@ -386,10 +386,10 @@ export default class GameLevel extends Scene {
         balloon.addPhysics();
         balloon.addAI(BalloonController, aiOptions);
         balloon.setGroup("balloon");
-        balloon.setTrigger("player", HW5_Events.PLAYER_HIT_BALLOON, HW5_Events.BALLOON_POPPED);
+        balloon.setTrigger("player", HW5_Events.PLAYER_HIT_BALLOON, null);
     }
 
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /**
      * You must implement this method.
      * There are 3 types of collisions:

@@ -7,15 +7,16 @@ import MathUtils from "../../Wolfie2D/Utils/MathUtils";
 import { HW5_Color } from "../hw5_color";
 import { HW5_Events } from "../hw5_enums";
 import BalloonController, { BalloonStates } from "./BalloonController";
+import Vec2 from "../../Wolfie2D/DataTypes/Vec2";
 
 export default abstract class BalloonState extends State {
 	owner: GameNode;
 	gravity: number = 500;
 	parent: BalloonController;
+	player_position: Vec2;
 
 	constructor(parent: StateMachine, owner: GameNode) {
 		super(parent);
-
 		this.owner = owner;
 	}
 
@@ -50,6 +51,10 @@ export default abstract class BalloonState extends State {
 					}
 				} 
 			}
+		}
+		// save player position for balloon-player distance detection
+		if(event.type == HW5_Events.PLAYER_MOVE) {
+			this.player_position = event.data.get("position");
 		}
 	}
 
