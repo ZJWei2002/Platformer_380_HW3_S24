@@ -420,7 +420,7 @@ export default class GameLevel extends Scene {
             return;
         }
         this.emitter.fireEvent(HW5_Events.BALLOON_POPPED, {owner: balloon.id});
-        this.emitter.fireEvent(GameEventType.PLAY_SOUND, {key: "balloon_pop", loop: false, holdReference: false})
+        this.emitter.fireEvent(GameEventType.PLAY_SOUND, {key: "balloon_pop", loop: false, holdReference: false});
         let suit_color = (<PlayerController>player.ai).suitColor;
         let balloon_color = (<BalloonController>balloon.ai).color;
 

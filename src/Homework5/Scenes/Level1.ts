@@ -41,6 +41,13 @@ export default class Level1 extends GameLevel {
     unloadScene(){
         // Keep resources - this is up to you
         this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: "level_music"});
+        this.load.keepObject("player");
+        this.load.keepObject("red");
+        this.load.keepObject("blue");
+        this.load.keepObject("jump");
+        this.load.keepObject("switch");
+        this.load.keepObject("player_death");
+        this.load.keepObject("balloon_pop");
     }
 
     startScene(): void {
