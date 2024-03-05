@@ -44,6 +44,7 @@ export default class PlayerController extends StateMachineAI {
     button5_pressed: boolean = false;
     button6_pressed: boolean = false;
     button7_pressed: boolean = false;
+    switches: Map<Vec2, boolean> = new Map<Vec2, boolean>();
 
     // HOMEWORK 5 - TODO - DONE
     /**
@@ -81,13 +82,13 @@ export default class PlayerController extends StateMachineAI {
 
         owner.tweens.add("death", {
             startDelay: 0,
-            duration: 1000,
+            duration: 2000,
             onEnd: HW5_Events.PLAYER_KILLED,
             effects: [
                 {
                     property: "rotation",
                     start: 0,
-                    end: 2 * Math.PI,
+                    end: 20 * Math.PI,
                     ease: EaseFunctionType.IN_OUT_QUAD
                 },
                 {
@@ -153,48 +154,15 @@ export default class PlayerController extends StateMachineAI {
             Debug.log("playerstate", "Player State: Fall");
         }
 
-        // switch detector for level1
-        if(this.tilemap.getScene() instanceof Level1) {
-            // first button
-            if(this.owner.position.x >= 6 * 32 && this.owner.position.x <= 7 * 32 
-                && this.owner.position.y == 15.5 * 32 && !this.button1_pressed) {
-                console.log("Button 1 pressed");
-                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
-                this.button1_pressed = true;
-                // change switch from "OFF" to "ON"
-                this.tilemap.setTileAtRowCol(new Vec2(6, 16), 9);
-            }
-            // second button
-            if(this.owner.position.x >= 23 * 32 && this.owner.position.x <= 24 * 32 
-                && this.owner.position.y == 12.5 * 32 && !this.button2_pressed) {
-                console.log("Button 2 pressed");
-                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
-                this.button2_pressed = true;
-                // change switch from "OFF" to "ON"
-                this.tilemap.setTileAtRowCol(new Vec2(23, 13), 9);
-            }
-            // Third button
-            if(this.owner.position.x >= 35 * 32 && this.owner.position.x <= 36 * 32 
-                && this.owner.position.y == 18.5 * 32 && !this.button3_pressed) {
-                console.log("Button 3 pressed");
-                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
-                this.button3_pressed = true;
-                // change switch from "OFF" to "ON"
-                this.tilemap.setTileAtRowCol(new Vec2(35, 19), 9);
-            }
-            // last button
-            if(this.owner.position.x >= 49 * 32 && this.owner.position.x <= 50 * 32 
-                && this.owner.position.y == 15.5 * 32 && !this.button4_pressed) {
-                console.log("Button 4 pressed");
-                this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
-                this.button4_pressed = true;
-                // change switch from "OFF" to "ON"
-                this.tilemap.setTileAtRowCol(new Vec2(49, 16), 9);
-            }
+        // get tile that the player currently step on
+        let current_step_on = new Vec2(Math.round((this.owner.position.x / 32) - 0.5), Math.round(this.owner.position.y / 32));
+
+        // check if this tile is a switch
+        if(this.tilemap.getTileAtRowCol(current_step_on) == 8 && !this.switches.get(current_step_on)) {
+            this.emitter.fireEvent(HW5_Events.PLAYER_HIT_SWITCH);
+            this.switches.set(current_step_on, true);
+            // change this switch from "OFF" to "ON"
+            this.tilemap.setTileAtRowCol(current_step_on, 9);
         }
-        // switch detector for level2
-        else {
-            console.log(this.button1_pressed);
-        }
-	}
+	}  
 }

@@ -13,7 +13,7 @@ export default class Level2 extends GameLevel {
      */
     loadScene(): void {
         // Load resources
-        this.load.tilemap("level2", "hw5_assets/tilemaps/level1.json");
+        this.load.tilemap("level2", "hw5_assets/tilemaps/level2.json");
         this.load.spritesheet("player", "hw5_assets/spritesheets/spike.json");
         this.load.spritesheet("green", "hw5_assets/spritesheets/greenBalloon.json");
         this.load.spritesheet("red", "hw5_assets/spritesheets/redBalloon.json");

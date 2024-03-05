@@ -3,7 +3,8 @@ import Vec2 from "../../Wolfie2D/DataTypes/Vec2";
 import Debug from "../../Wolfie2D/Debug/Debug";
 import { GameEventType } from "../../Wolfie2D/Events/GameEventType";
 import Input from "../../Wolfie2D/Input/Input";
-import { TweenableProperties } from "../../Wolfie2D/Nodes/GameNode";
+import CanvasNode from "../../Wolfie2D/Nodes/CanvasNode";
+import GameNode, { TweenableProperties } from "../../Wolfie2D/Nodes/GameNode";
 import { GraphicType } from "../../Wolfie2D/Nodes/Graphics/GraphicTypes";
 import Point from "../../Wolfie2D/Nodes/Graphics/Point";
 import Rect from "../../Wolfie2D/Nodes/Graphics/Rect";
@@ -129,7 +130,6 @@ export default class GameLevel extends Scene {
                         } else {
                             // Other is player, node is balloon
                             this.handlePlayerBalloonCollision(<AnimatedSprite>other,<AnimatedSprite>node);
-
                         }
                     }
                     break;
@@ -140,7 +140,7 @@ export default class GameLevel extends Scene {
                         this.balloonsPopped++;
                         this.balloonLabel.text = "Balloons Left: " + (this.totalBalloons - this.balloonsPopped);
                         let node = this.sceneGraph.getNode(event.data.get("owner"));
-                        
+
                         // Set mass based on color
                         let particleMass = 0;
                         if ((<BalloonController>node._ai).color == HW5_Color.RED) {
@@ -221,7 +221,7 @@ export default class GameLevel extends Scene {
             if (Input.isKeyJustPressed("3")) {
                 this.emitter.fireEvent(HW5_Events.SUIT_COLOR_CHANGE, {color: HW5_Color.GREEN});
                 this.suitChangeTimer.start();
-        }
+            }
         }
     }
 
@@ -366,7 +366,7 @@ export default class GameLevel extends Scene {
         this.levelEndArea.color = new Color(0, 0, 0, 0);
     }
 
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /*
         Make sure balloons are being set up properly to have triggers so that when they collide
         with players, they send out a trigger event.
@@ -386,7 +386,7 @@ export default class GameLevel extends Scene {
         balloon.addPhysics();
         balloon.addAI(BalloonController, aiOptions);
         balloon.setGroup("balloon");
-
+        balloon.setTrigger("player", HW5_Events.PLAYER_HIT_BALLOON, HW5_Events.BALLOON_POPPED);
     }
 
     // HOMEWORK 5 - TODO
@@ -416,6 +416,18 @@ export default class GameLevel extends Scene {
      * 
      */
     protected handlePlayerBalloonCollision(player: AnimatedSprite, balloon: AnimatedSprite) {
+        if(player == undefined || balloon == undefined) {
+            return;
+        }
+        this.emitter.fireEvent(HW5_Events.BALLOON_POPPED, {owner: balloon.id});
+        this.emitter.fireEvent(GameEventType.PLAY_SOUND, {key: "balloon_pop", loop: false, holdReference: false})
+        let suit_color = (<PlayerController>player.ai).suitColor;
+        let balloon_color = (<BalloonController>balloon.ai).color;
+
+        // if suit color and balloon color are not the same, damage the player
+        if(suit_color != balloon_color) {
+            this.incPlayerLife(-1);
+        }
     }
 
     /**
