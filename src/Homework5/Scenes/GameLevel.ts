@@ -210,15 +210,15 @@ export default class GameLevel extends Scene {
          * Pressing 3 switches our suit to GREEN
          */
         if (this.suitChangeTimer.isStopped()) {
-            if (Input.isKeyJustPressed("1")) {
+            if (Input.isKeyJustPressed("1") && (<PlayerController>this.player.ai).suitColor != HW5_Color.RED) {
                 this.emitter.fireEvent(HW5_Events.SUIT_COLOR_CHANGE, {color: HW5_Color.RED});
                 this.suitChangeTimer.start();
             }
-            if (Input.isKeyJustPressed("2")) {
+            if (Input.isKeyJustPressed("2") && (<PlayerController>this.player.ai).suitColor != HW5_Color.BLUE) {
                 this.emitter.fireEvent(HW5_Events.SUIT_COLOR_CHANGE, {color: HW5_Color.BLUE});
                 this.suitChangeTimer.start();
             }
-            if (Input.isKeyJustPressed("3")) {
+            if (Input.isKeyJustPressed("3") && (<PlayerController>this.player.ai).suitColor != HW5_Color.GREEN) {
                 this.emitter.fireEvent(HW5_Events.SUIT_COLOR_CHANGE, {color: HW5_Color.GREEN});
                 this.suitChangeTimer.start();
             }

@@ -5,37 +5,14 @@ import { HW5_Color } from "../hw5_color";
 import GameLevel from "./GameLevel";
 
 export default class Level2 extends GameLevel {
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /**
      * Decide which resource to keep and which to cull.
      * 
      * Not all of these loads are needed. Decide which to remove and handle keeping resources in Level1
      */
     loadScene(): void {
-        /*this.load.spritesheet(this.load.getObject("player").key, this.load.getObject("player").path);
-        this.load.spritesheet(this.load.getObject("red").key, this.load.getObject("red").path);
-        this.load.spritesheet(this.load.getObject("blue").key, this.load.getObject("blue").path);
-        this.load.audio(this.load.getObject("jump").key, this.load.getObject("jump").path);
-        this.load.audio(this.load.getObject("switch").key, this.load.getObject("switch").path);
-        this.load.audio(this.load.getObject("player_death").key, this.load.getObject("player_death").path);
-        this.load.audio(this.load.getObject("balloon_pop").key, this.load.getObject("balloon_pop").path); 
-        this.load.getSpritesheet("red");
-        this.load.getSpritesheet("blue");
-        this.load.getSpritesheet("green");
-        this.load.getAudio("jump");
-        this.load.getAudio("switch");
-        this.load.getAudio("player_death");
-        this.load.getAudio("balloon_pop");*/
-        this.load.spritesheet("player", "hw5_assets/spritesheets/spike.json");
-        this.load.spritesheet("red", "hw5_assets/spritesheets/redBalloon.json");
-        this.load.spritesheet("blue", "hw5_assets/spritesheets/blueBalloon.json");
-        this.load.audio("jump", "hw5_assets/sounds/jump.wav");
-        this.load.audio("switch", "hw5_assets/sounds/switch.wav");
-        this.load.audio("player_death", "hw5_assets/sounds/player_death.wav");
-        this.load.audio("balloon_pop", "hw5_assets/sounds/balloon_pop.wav")
-
         // Load resources
-        this.load.spritesheet("green", "hw5_assets/spritesheets/greenBalloon.json");
         this.load.tilemap("level2", "hw5_assets/tilemaps/level2.json");
         this.load.audio("level_music", "hw5_assets/music/level2_background_music.mp3");
     }

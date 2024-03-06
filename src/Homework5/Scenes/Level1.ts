@@ -17,6 +17,7 @@ export default class Level1 extends GameLevel {
         this.load.spritesheet("player", "hw5_assets/spritesheets/spike.json");
         this.load.spritesheet("red", "hw5_assets/spritesheets/redBalloon.json");
         this.load.spritesheet("blue", "hw5_assets/spritesheets/blueBalloon.json");
+        this.load.spritesheet("green", "hw5_assets/spritesheets/greenBalloon.json");
         this.load.audio("jump", "hw5_assets/sounds/jump.wav");
         this.load.audio("switch", "hw5_assets/sounds/switch.wav");
         this.load.audio("player_death", "hw5_assets/sounds/player_death.wav");
@@ -39,15 +40,16 @@ export default class Level1 extends GameLevel {
      * not a lot of load time for such a small project).
      */
     unloadScene(){
-        // Keep resources - this is up to you
+        // Keep resources
+        this.load.keepSpritesheet("player");
+        this.load.keepSpritesheet("red");
+        this.load.keepSpritesheet("blue");
+        this.load.keepSpritesheet("green");
+        this.load.keepAudio("jump");
+        this.load.keepAudio("switch");
+        this.load.keepAudio("player_death");
+        this.load.keepAudio("balloon_pop");
         this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: "level_music"});
-        this.load.keepObject("player");
-        this.load.keepObject("red");
-        this.load.keepObject("blue");
-        this.load.keepObject("jump");
-        this.load.keepObject("switch");
-        this.load.keepObject("player_death");
-        this.load.keepObject("balloon_pop");
     }
 
     startScene(): void {

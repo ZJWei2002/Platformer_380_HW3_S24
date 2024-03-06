@@ -45,4 +45,3 @@ export default class HW5_ParticleSystem extends ParticleSystem {
         });
     }
 }
-//this.lifetime * particle.vel.y / 1000 + 0.5 * 10 * Math.pow(this.lifetime, 2)

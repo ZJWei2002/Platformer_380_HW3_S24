@@ -37,18 +37,11 @@ export default abstract class BalloonState extends State {
 					} else {
 						this.finished(BalloonStates.RISING);
 					}
+				// modification has been made according to assignment requirements
 				} else if (this.parent.color == HW5_Color.BLUE) {
-					if (new_color == HW5_Color.RED) {
-						this.finished(BalloonStates.ZEROGRAVITY);
-					} else {
-						this.finished(BalloonStates.RISING);
-					}
+					this.finished(BalloonStates.ZEROGRAVITY);
 				} else if (this.parent.color == HW5_Color.GREEN) {
-					if (new_color == HW5_Color.RED) {
-						this.finished(BalloonStates.RISING);
-					} else {
-						this.finished(BalloonStates.ZEROGRAVITY);
-					}
+					this.finished(BalloonStates.RISING);
 				} 
 			}
 		}
