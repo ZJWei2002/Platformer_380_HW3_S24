@@ -30,7 +30,8 @@ export default class HW5_ParticleSystem extends ParticleSystem {
         else if(particle.mass == 3) {
             particle.color = new Color(0, 0, 255);
         }
-        particle.vel = RandUtils.randVec(-100, 100, -100, 50).add(new Vec2(0, 50 * particle.mass));
+        particle.vel = RandUtils.randVec(-100, 100, -100, 100);
+        //.add(new Vec2(0, 50 * particle.mass))
         particle.tweens.add("active", {
             startDelay: 0,
             duration: this.lifetime,
@@ -43,5 +44,16 @@ export default class HW5_ParticleSystem extends ParticleSystem {
                 }
             ]
         });
+    }
+
+    // add y-direction velocity at each frame to simulate gravity effect on particles
+    update(deltaT: number): void {
+        super.update(deltaT);
+        for (let i = 0; i < this.particlesToRender; i++) {
+            let particle = this.particlePool[i];
+            if(particle.vel != undefined) {
+                particle.vel.add(new Vec2(0, deltaT * 9.81 * (30 + 10 * particle.mass)));
+            }
+        }
     }
 }

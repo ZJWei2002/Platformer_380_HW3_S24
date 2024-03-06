@@ -27,7 +27,7 @@ export default class Level1 extends GameLevel {
         this.load.audio("level_music", "hw5_assets/music/level1_background_music.mp3");
     }
 
-    // HOMEWORK 5 - TODO
+    // HOMEWORK 5 - TODO - DONE
     /**
      * Decide which resource to keep and which to cull.
      * 
