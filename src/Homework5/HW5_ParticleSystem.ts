@@ -31,7 +31,6 @@ export default class HW5_ParticleSystem extends ParticleSystem {
             particle.color = new Color(0, 0, 255);
         }
         particle.vel = RandUtils.randVec(-100, 100, -100, 100);
-        //.add(new Vec2(0, 50 * particle.mass))
         particle.tweens.add("active", {
             startDelay: 0,
             duration: this.lifetime,
